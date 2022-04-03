@@ -11,20 +11,14 @@ const getBookLengthByIsbn = async (isbn) => {
     // let bookAuthor = getData.data.items[0].volumeInfo.authors[0]
     // console.log(`"${bookTitle}" by ${bookAuthor} is approximately ${pageCount} pages.`)
     // END
+    console.log(pageCount)
     let estWordsPerPage = 275
     let totalWords = (estWordsPerPage * pageCount)
-    
+    console.log(totalWords)
     return totalWords
 }
 
-const estimateWords = (pagesPerBook) => {
-    // console.log(`here's ${pagesPerBook}`)
-     // assuming an average of 275 words per page in a book
-    
-    return totalWords 
-}
-
-let wordsInBook = estimateWords(bookLengthInPages)
+getBookLengthByIsbn(9781476753836)
 
 const howLongToRead = () => {}
 

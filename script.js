@@ -1,24 +1,26 @@
 const apiKey = 'AIzaSyD9-osvn__x0twRkNiNtjq_jueAGwmZ1ms'
 // salt fat acid heat, isbn:9781476753836
 
-// let isbn = prompt('enter isbn')
+let isbn = 9781476753836
 
 const getBookLengthByIsbn = async (isbn) => {
     const getData = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
     let pageCount = getData.data.items[0].volumeInfo.pageCount
-    let bookTitle = getData.data.items[0].volumeInfo.title
-    let bookAuthor = getData.data.items[0].volumeInfo.authors[0]
-    console.log(`"${bookTitle}" by ${bookAuthor} is approximately ${pageCount} pages.`)
-    console.log(`pageCount == ${pageCount}`)
-    return pageCount
+    // START - BOOK TITLE AND BOOK AUTHOR TO BE PORTED TO PAGE EVENTUALLY
+    // let bookTitle = getData.data.items[0].volumeInfo.title
+    // let bookAuthor = getData.data.items[0].volumeInfo.authors[0]
+    // console.log(`"${bookTitle}" by ${bookAuthor} is approximately ${pageCount} pages.`)
+    // END
+    let estWordsPerPage = 275
+    let totalWords = (estWordsPerPage * pageCount)
+    
+    return totalWords
 }
 
-let bookLengthInPages = getBookLengthByIsbn(9781476753836)
-
 const estimateWords = (pagesPerBook) => {
-    console.log(`here's ${pagesPerBook}`)
-    let wordsPerPage = 275 // assuming an average of 275 words per page in a book
-    let totalWords = (wordsPerPage * pagesPerBook)
+    // console.log(`here's ${pagesPerBook}`)
+     // assuming an average of 275 words per page in a book
+    
     return totalWords 
 }
 

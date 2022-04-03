@@ -1,27 +1,30 @@
 const apiKey = 'AIzaSyD9-osvn__x0twRkNiNtjq_jueAGwmZ1ms'
 // salt fat acid heat, isbn:9781476753836
 
-const getBookLengthByIsbn = async () => {
-    let isbn = prompt('enter isbn')
+// let isbn = prompt('enter isbn')
+
+const getBookLengthByIsbn = async (isbn) => {
     const getData = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
     let pageCount = getData.data.items[0].volumeInfo.pageCount
     let bookTitle = getData.data.items[0].volumeInfo.title
     let bookAuthor = getData.data.items[0].volumeInfo.authors[0]
     console.log(`"${bookTitle}" by ${bookAuthor} is approximately ${pageCount} pages.`)
+    console.log(`pageCount == ${pageCount}`)
     return pageCount
 }
 
-const estimateWords = (pageCount) => {
-    console.log(pageCount)
+let bookLengthInPages = getBookLengthByIsbn(9781476753836)
+
+const estimateWords = (pagesPerBook) => {
+    console.log(`here's ${pagesPerBook}`)
     let wordsPerPage = 275 // assuming an average of 275 words per page in a book
-    let totalWords = (wordsPerPage * pageCount)
-    console.log(totalWords)
+    let totalWords = (wordsPerPage * pagesPerBook)
     return totalWords 
 }
 
-const howLongToRead = () => {}
+let wordsInBook = estimateWords(bookLengthInPages)
 
-console.log(estimateWords(getBookLengthByIsbn()))
+const howLongToRead = () => {}
 
 
 

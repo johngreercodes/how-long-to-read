@@ -1,7 +1,7 @@
-const apiKey = 'AIzaSyD9-osvn__x0twRkNiNtjq_jueAGwmZ1ms'
-const API_KEY = process.env.BOOKS_API_KEY
 // salt fat acid heat, isbn:9781476753836
 // east of eden, isbn:9780141923505
+
+const apiKey = config.BOOKS_API_KEY
 
 const howLongToRead = async (isbn) => {
     const getData = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)

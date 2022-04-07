@@ -18,6 +18,7 @@ const howLongToRead = async (isbn) => {
     let minutes = parseInt(timeToReadInMinutes % 60)
     let output = `Reading "${bookTitle}" by ${bookAuthor} would take approximately ${hours} hours and ${minutes} minutes.`
     console.log(output)
+    document.getElementById('result').innerText = output
     return output
 }
 

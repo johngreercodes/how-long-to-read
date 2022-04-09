@@ -6,7 +6,11 @@ const apiKey = config.BOOKS_API_KEY
 
 const searchBooks = async (query) => {
     const getData = await axios.get(`${baseUrl}${query}&key=${apiKey}`)
-    console.log(getData.data)
+    for (let i = 0; i < 5; i++) {
+        const result = document.createElement('p')
+        result.innerText = `${i+1}: ${getData.data.items[i].volumeInfo.title}`      
+        document.body.querySelector(`.searchResults`).appendChild(result)
+    }
 }
 
 searchBooks(prompt('search term'))
@@ -29,9 +33,12 @@ const howLongToRead = async (isbn) => {
     return output
 }
 
+// build the isbn number section 
 const btn = document.createElement('button')
 btn.innerText = `How long to read?`
 btn.classList.add('button')
 btn.setAttribute('type','button')
 document.getElementById('form').appendChild(btn)
 btn.addEventListener('click', howLongToRead)
+
+// build the search results section

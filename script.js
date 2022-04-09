@@ -1,6 +1,3 @@
-// salt fat acid heat, isbn:9781476753836
-// east of eden, isbn:9780141923505
-
 const baseUrl = `https://www.googleapis.com/books/v1/volumes?q=`
 const apiKey = config.BOOKS_API_KEY
 const searchResultsDiv = document.body.querySelector(`.searchResults`)
@@ -11,10 +8,8 @@ const searchBooks = async (query) => {
     for (let i = 0; i < 5; i++) {
         const resultDiv = document.createElement('div')
         resultDiv.innerHTML = `<p>${i+1}: "${getData.data.items[i].volumeInfo.title}" by ${getData.data.items[i].volumeInfo.authors[0]}</p>`
-        // displays isbn on page 
-        // resultDiv.innerHTML += `isbn: ${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`
         const isbnBtn = document.createElement('button')
-        isbnBtn.innerText = `Show ISBN`
+        isbnBtn.innerText = `HLTR? 📖`
         isbnBtn.addEventListener("click", ()=>{
             howLongToRead(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
         })
@@ -39,14 +34,6 @@ const howLongToRead = async (isbn) => {
     document.getElementById('result').innerText = output
     return output
 }
-
-// build the isbn number section 
-// const howLongBtn = document.createElement('button')
-// howLongBtn.innerText = `How long to read?`
-// howLongBtn.classList.add('button')
-// howLongBtn.setAttribute('type','button')
-// document.getElementById('isbnForm').appendChild(howLongBtn)
-// howLongBtn.addEventListener('click', howLongToRead)
 
 // build the search results section
 const searchBtn = document.createElement('button')

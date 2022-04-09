@@ -1,8 +1,15 @@
 // salt fat acid heat, isbn:9781476753836
 // east of eden, isbn:9780141923505
 
-console.log(`isbn: 9780141923505`)
+const baseUrl = `https://www.googleapis.com/books/v1/volumes?q=`
 const apiKey = config.BOOKS_API_KEY
+
+const searchBooks = async (query) => {
+    const getData = await axios.get(`${baseUrl}${query}&key=${apiKey}`)
+    console.log(getData.data)
+}
+
+searchBooks(prompt('search term'))
 
 const howLongToRead = async (isbn) => {
     isbn = document.getElementById('label').value

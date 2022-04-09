@@ -6,6 +6,7 @@ const apiKey = config.BOOKS_API_KEY
 const searchResultsDiv = document.body.querySelector(`.searchResults`)
 
 const searchBooks = async (query) => {
+    query = document.getElementById('searchLabel').value
     const getData = await axios.get(`${baseUrl}${query}&key=${apiKey}`)
     for (let i = 0; i < 5; i++) {
         const resultDiv = document.createElement('div')
@@ -13,19 +14,17 @@ const searchBooks = async (query) => {
         // displays isbn on page 
         // resultDiv.innerHTML += `isbn: ${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`
         const isbnBtn = document.createElement('button')
-        isbnBtn.innerText = `Copy ISBN`
+        isbnBtn.innerText = `Show ISBN`
         isbnBtn.addEventListener("click", ()=>{
-            console.log(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
+            alert(`isbn: ${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
         })
         searchResultsDiv.appendChild(resultDiv)
         resultDiv.appendChild(isbnBtn)
     }
 }
 
-searchBooks(prompt('search term'))
-
 const howLongToRead = async (isbn) => {
-    isbn = document.getElementById('label').value
+    isbn = document.getElementById('howLongLabel').value
     const getData = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
     let pageCount = getData.data.items[0].volumeInfo.pageCount
     let bookTitle = getData.data.items[0].volumeInfo.title
@@ -43,11 +42,17 @@ const howLongToRead = async (isbn) => {
 }
 
 // build the isbn number section 
-const btn = document.createElement('button')
-btn.innerText = `How long to read?`
-btn.classList.add('button')
-btn.setAttribute('type','button')
-document.getElementById('form').appendChild(btn)
-btn.addEventListener('click', howLongToRead)
+const howLongBtn = document.createElement('button')
+howLongBtn.innerText = `How long to read?`
+howLongBtn.classList.add('button')
+howLongBtn.setAttribute('type','button')
+document.getElementById('isbnForm').appendChild(howLongBtn)
+howLongBtn.addEventListener('click', howLongToRead)
 
 // build the search results section
+const searchBtn = document.createElement('button')
+searchBtn.innerText = `Search`
+searchBtn.classList.add('button')
+searchBtn.setAttribute('type','button')
+document.getElementById('searchForm').appendChild(searchBtn)
+searchBtn.addEventListener('click', searchBooks)

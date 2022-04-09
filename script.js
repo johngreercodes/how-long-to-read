@@ -3,13 +3,22 @@
 
 const baseUrl = `https://www.googleapis.com/books/v1/volumes?q=`
 const apiKey = config.BOOKS_API_KEY
+const searchResultsDiv = document.body.querySelector(`.searchResults`)
 
 const searchBooks = async (query) => {
     const getData = await axios.get(`${baseUrl}${query}&key=${apiKey}`)
     for (let i = 0; i < 5; i++) {
-        const result = document.createElement('p')
-        result.innerText = `${i+1}: ${getData.data.items[i].volumeInfo.title}`      
-        document.body.querySelector(`.searchResults`).appendChild(result)
+        const resultDiv = document.createElement('div')
+        resultDiv.innerHTML = `<p>${i+1}: "${getData.data.items[i].volumeInfo.title}" by ${getData.data.items[i].volumeInfo.authors[0]}</p>`
+        // displays isbn on page 
+        // resultDiv.innerHTML += `isbn: ${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`
+        const isbnBtn = document.createElement('button')
+        isbnBtn.innerText = `Copy ISBN`
+        isbnBtn.addEventListener("click", ()=>{
+            console.log(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
+        })
+        searchResultsDiv.appendChild(resultDiv)
+        resultDiv.appendChild(isbnBtn)
     }
 }
 

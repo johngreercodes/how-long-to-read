@@ -5,11 +5,7 @@
     font-size: 24px;
 }
 
-#searchResults {
-    font-size: 16px;
-    border-style: groove;
-}
-
-.search-results {
+.searchResults {
     font-style: italic;
+    border-style: groove;
 }

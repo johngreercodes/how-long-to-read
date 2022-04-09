@@ -16,7 +16,7 @@ const searchBooks = async (query) => {
         const isbnBtn = document.createElement('button')
         isbnBtn.innerText = `Show ISBN`
         isbnBtn.addEventListener("click", ()=>{
-            alert(`isbn: ${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
+            howLongToRead(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
         })
         searchResultsDiv.appendChild(resultDiv)
         resultDiv.appendChild(isbnBtn)
@@ -24,7 +24,6 @@ const searchBooks = async (query) => {
 }
 
 const howLongToRead = async (isbn) => {
-    isbn = document.getElementById('howLongLabel').value
     const getData = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
     let pageCount = getData.data.items[0].volumeInfo.pageCount
     let bookTitle = getData.data.items[0].volumeInfo.title
@@ -42,12 +41,12 @@ const howLongToRead = async (isbn) => {
 }
 
 // build the isbn number section 
-const howLongBtn = document.createElement('button')
-howLongBtn.innerText = `How long to read?`
-howLongBtn.classList.add('button')
-howLongBtn.setAttribute('type','button')
-document.getElementById('isbnForm').appendChild(howLongBtn)
-howLongBtn.addEventListener('click', howLongToRead)
+// const howLongBtn = document.createElement('button')
+// howLongBtn.innerText = `How long to read?`
+// howLongBtn.classList.add('button')
+// howLongBtn.setAttribute('type','button')
+// document.getElementById('isbnForm').appendChild(howLongBtn)
+// howLongBtn.addEventListener('click', howLongToRead)
 
 // build the search results section
 const searchBtn = document.createElement('button')

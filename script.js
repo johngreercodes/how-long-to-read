@@ -10,12 +10,24 @@ const searchBooks = async (query) => {
         resultDiv.innerHTML = `<p>${i+1}: "${getData.data.items[i].volumeInfo.title}" by ${getData.data.items[i].volumeInfo.authors[0]}</p>`
         const isbnBtn = document.createElement('button')
         isbnBtn.innerText = `HLTR? 📖`
+        console.log(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
         isbnBtn.addEventListener("click", ()=>{
             howLongToRead(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
         })
         searchResultsDiv.appendChild(resultDiv)
         resultDiv.appendChild(isbnBtn)
     }
+}
+
+const trimIsbn = (arr) => {
+    let newString = ''  
+    arr = arr.split('')
+    for (let i = 0; i < arr.length; i++) {
+      if (isNaN(arr[i]) == false) {
+        newString += arr[i]
+      } 
+    }
+    return newString
 }
 
 const howLongToRead = async (isbn) => {

@@ -10,9 +10,9 @@ todo 📝
 - [x] Start showing those API call results to the webpage
 - [x] Build a search engine because ISBN numbers are a pain
 - [ ] Show more data about the book when shown
-- [ ] Take current page number to calculate percentage complete
 - [ ] Add some actual design to the front-end
 - [ ] Of course, dark mode
+- [ ] Take current page number to calculate percentage complete (this might be better managed with, say, React state 🤔)
 
 bugs 🐛
 - [ ] unable to search multiple times on one page

@@ -13,9 +13,10 @@ todo 📝
 - [ ] Add some actual design to the front-end
 - [ ] Of course, dark mode
 - [ ] Take current page number to calculate percentage complete (this might be better managed with, say, React state 🤔)
+- [ ] Add error handling with try/catch
 
 bugs 🐛
 - [ ] unable to search multiple times on one page
 - [ ] google books API returns lots of duplicates
-- [ ] sometimes the isbn has non-numerical data in it
+- [x] sometimes the isbn has non-numerical data in it
 - [ ] some results don't actually have read times

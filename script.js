@@ -12,7 +12,7 @@ const searchBooks = async (query) => {
         isbnBtn.innerText = `HLTR? 📖`
         console.log(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
         isbnBtn.addEventListener("click", ()=>{
-            howLongToRead(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`)
+            howLongToRead(trimIsbn(`${getData.data.items[i].volumeInfo.industryIdentifiers[0].identifier}`))
         })
         searchResultsDiv.appendChild(resultDiv)
         resultDiv.appendChild(isbnBtn)
@@ -31,7 +31,9 @@ const trimIsbn = (arr) => {
 }
 
 const howLongToRead = async (isbn) => {
+    console.log(isbn)
     const getData = await axios.get(`https://www.googleapis.com/books/v1/volumes?q=isbn:${isbn}&key=${apiKey}`)
+    console.log(getData)
     let pageCount = getData.data.items[0].volumeInfo.pageCount
     let bookTitle = getData.data.items[0].volumeInfo.title
     let bookAuthor = getData.data.items[0].volumeInfo.authors[0]

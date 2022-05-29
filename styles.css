@@ -1,13 +1,26 @@
-* {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 10px;
+.title {
+    color: rgb(1, 144, 208);
 }
 
 .searchResults {
     font-style: italic;
+    color: rgb(102, 66, 40);
+    font-weight: bolder;
+    font-size: larger;
 }
 
 footer {
     font-size: 12px;
+    margin-top: auto;
 }
+
+body {
+    background-color: rgb(209, 196, 158);
+    font-weight: 500;
+    font-family: 'Playfair Display', serif;
+    
+}
+
+/*
+https://coolors.co/859fc1-0190d0-664228-d1c49e
+*/

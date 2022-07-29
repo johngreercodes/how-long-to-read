@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/johngreercodes/how-long-to-read/issues"
   },
-  "homepage": "https://github.com/johngreercodes/how-long-to-read#readme"
+  "homepage": "https://github.com/johngreercodes/how-long-to-read#readme",
+  "devDependencies": {
+    "cypress": "^10.3.1"
+  }
 }

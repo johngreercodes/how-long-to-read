@@ -1,0 +1,19 @@
+{
+  "name": "howlongtoread",
+  "version": "1.0.0",
+  "description": "Find out how long it'll take you to get through that book.",
+  "main": "config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johngreercodes/how-long-to-read.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johngreercodes/how-long-to-read/issues"
+  },
+  "homepage": "https://github.com/johngreercodes/how-long-to-read#readme"
+}
